@@ -7,13 +7,15 @@ const ListHeader = ({ title, handleRefresh, routePath }) => {
       <NavLink to={routePath}>
         <h2 className="title">{title}</h2>
       </NavLink>
-      <button
-        className="button refresh-button"
-        onClick={handleRefresh}
-        aria-label="refresh"
-      >
-        <i className="fas fa-sync" aria-hidden="true" />
-      </button>
+      {(handleRefresh) && (
+        <button
+          className="button refresh-button"
+          onClick={handleRefresh}
+          aria-label="refresh"
+        >
+          <i className="fas fa-sync" aria-hidden="true" />
+        </button>
+      )}
     </div>
   );
 };
