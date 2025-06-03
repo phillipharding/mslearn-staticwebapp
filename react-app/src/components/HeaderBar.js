@@ -1,10 +1,11 @@
 import React from 'react';
 import HeaderBarBrand from './HeaderBarBrand';
+import styles from './HeaderBar.module.scss';
 
 const HeaderBar = () => (
-  <header>
+  <header className={styles.navbarwrapper}>
     <nav
-      className="navbar has-background-dark is-dark"
+      className="navbar"
       role="navigation"
       aria-label="main navigation"
     >
