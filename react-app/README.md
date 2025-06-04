@@ -67,7 +67,12 @@ For local development, the front-end and APi will be available at the following 
    ```
    az staticwebapp create -n <app name> -g <resource group> -l westeurope --sku Standard --query "defaultHostname"
    ```
-   **```Retrieve the Deployment Token from the Azure Portal```**
+   **Retrieve the deployment token from the Azure Portal.**
+
+   **or, retrieve the deployment token using the AZ CLI.**
+   ```
+   az staticwebapp secrets list --name <app name> --query "properties.apiKey"
+   ```
 
 3. Perform a Production Build
    ```
