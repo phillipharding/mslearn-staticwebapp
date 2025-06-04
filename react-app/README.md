@@ -1,30 +1,89 @@
-# Static Web App
+# Sample Azure Static Web App
 
-This project was created to help represent a fundamental app written with React. The shopping theme is used throughout the app.
+This project was created to represent a static web app written with React (```Create React App```), with a supporting managed API written with ```Node.js v18 (JavaScript)``` and the ```v4``` Azure Functions programming model.
+
+It contains both the ```staticwebapp.config.json``` and ```swa-cli.config.json``` files.
+
+## Pre-requisites
+
+1. Node.js V18 or above
+2. Azure CLI - https://learn.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest
+2. Azure CLI (staticwebapp) - https://learn.microsoft.com/en-us/cli/azure/staticwebapp?view=azure-cli-latest
+3. SWA CLI - https://azure.github.io/static-web-apps-cli
 
 ## Getting Started
 
-1. Create a repository from this template repository <https://github.com/MicrosoftDocs/mslearn-staticwebapp/generate>
-
-1. Enter the name of your new repository as _my-static-web-app_
-
-1. Clone your new repository
-
-   ```bash
+1. Clone the repository
+   ```
    git clone https://github.com/your-github-organization/my-static-web-app
    cd my-static-web-app/react-app
    ```
-
-1. Install the npm packages
-
-   ```bash
-   npm install
+2. Install the npm packages
    ```
-
-1. Run the app
-
-   ```bash
+   npm install
+   cd ./api
+   npm install
+   cd ..
+   ```
+3. Run the Front-end app only
+   ```
    npm start
+   ```
+4. Run the API only
+   ```
+   npm run start-api
+   ```
+5. Use the SWA Emulator to run the Front-end (assumes the API is already running)
+   ```
+   npm run swa-start-fe
+   ```
+5. Use the SWA Emulator to run the Front-end and API
+   ```
+   npm run swa-start-all
+   ```
+6. Perform a Production Build
+   ```
+   swa build
+   ```
+## Local Development
+
+For local development, the front-end and APi will be available at the following URLs.
+
+> Using react-app dev server: http://localhost:3000
+
+> The API is served at: http://localhost:7071
+
+> Using Azure Static Web Apps emulator: http://localhost:4280
+
+## Deployment
+
+1. Create a resource group
+   ```
+   az group create -n <resource group> -l uksouth --query "properties.provisioningState"
+   ```
+2. Create a Static Web App resource
+
+   **Note:** static web app resources are only available in these locations: ```westus2```,```centralus```,```eastus2```,**```westeurope```**,```eastasia```
+   ```
+   az staticwebapp create -n <app name> -g <resource group> -l westeurope --sku Standard --query "defaultHostname"
+   ```
+   **```Retrieve the Deployment Token from the Azure Portal```**
+
+3. Perform a Production Build
+   ```
+   swa build
+   ```
+4. Login to Azure using the SWA CLI
+   ```
+   swa login
+   ```
+5. Deploy to the **Production** environment
+   ```
+   swa deploy --resource-group <resource group> --app-name <app name> --env production --deployment-token <deployment token>
+   ```
+6. Deploy to the **Preview** environment
+   ```
+   swa deploy --resource-group <resource group> --app-name <app name> --env preview --deployment-token <deployment token>
    ```
 
 ## Resources
