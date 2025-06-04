@@ -5,7 +5,7 @@ const NotFound = () => (
     <div className="content-title-group not-found">
       <i className="fas fa-exclamation-triangle" aria-hidden="true" />
       &nbsp;
-      <span className="title">{`These aren't the bits you're looking for`}</span>
+      <span className="title">{`The page you're looking for wasn't found.`}</span>
     </div>
   </div>
 );

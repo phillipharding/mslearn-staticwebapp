@@ -6,6 +6,9 @@ import { withRouter } from 'react-router';
 import { HeaderBar, NavBar, NotFound } from './components';
 import About from './About';
 
+import { Chip } from "primereact/chip";
+import "primereact/resources/themes/fluent-light/theme.css";
+
 const Products = withRouter(
   lazy(() => import(/* webpackChunkName: "products" */ './products/Products'))
 );
@@ -15,6 +18,7 @@ class App extends Component {
     return (
       <div>
         <HeaderBar />
+        <Chip label="Action" />
         <div className="section columns">
           <NavBar />
           <main className="column">
